@@ -1,0 +1,16 @@
+{
+    "id": "referral",
+    "name": "Referral",
+    "description": "Complete referral plugin for Azuriom by Boulldogo",
+    "version": "1.0.0",
+    "url": "https://discord.gg/yFpkrwebnQ",
+    "authors": [
+        "Boulldogo"
+    ],
+    "azuriom_api": "1.1.0",
+    "providers": [
+        "\\Azuriom\\Plugin\\Referral\\Providers\\ReferralServiceProvider",
+        "\\Azuriom\\Plugin\\Referral\\Providers\\EventServiceProvider",
+        "\\Azuriom\\Plugin\\Referral\\Providers\\RouteServiceProvider"
+    ]
+}
