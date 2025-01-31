@@ -12,8 +12,9 @@ class ReferrerUserComposer extends AdminUserEditComposer
 {
     public function getCards(User $user, View $view)
     {
-        if(Referrals::where('referred_id', $user->id)->exists()) {
-            $rId = Referrals::where('referred_id', $user->id)->value('referrer_id');
+        $referral = Referrals::where('referred_id', $user->id);
+        if($referral !== null) {
+            $rId = $referral->referrer_id;
             $referrer = User::find($rId)->name;
             $view->with('referrer', $referrer);
         } else {

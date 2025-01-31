@@ -12,7 +12,7 @@
         if($referrer !== null && $referrer !== 0) {
             $referrerName = User::find($referrer)->name;
         }
-        $sponsors = Referrals::where('referrer_id', $user->id)->get();
+        $referreds = Referrals::where('referrer_id', $user->id)->get();
     @endphp
 
     <div class="mb-3">
@@ -34,7 +34,7 @@
 
     <div class="mb-3">
         <label class="form-label" for="referredTable">{{ trans('referral::messages.profile.referred_users') }}</label>
-        @if($sponsors->isNotEmpty())
+        @if($referreds->isNotEmpty())
             <table class="table" id="referredTable">
                 <thead>
                     <tr>
@@ -46,13 +46,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($sponsors as $sponsor)
+                    @foreach($referreds as $referred)
                         <tr>
-                            <td>{{ $sponsor->id }}</td>
-                            <td>{{ \Azuriom\Models\User::find($sponsor->referred_id)->name }}</td>
-                            <td>{{ $sponsor->referrer_total_earn }} {{ money_name() }}</td>
-                            <td>{{ $sponsor->created_via_link ? '✅' : '❌' }}</td>
-                            <td>{{ $sponsor->created_at->translatedFormat('d/m/Y') }} {{ trans('referral::messages.admin.at') }} {{ $sponsor->created_at->format('H:i') }}</td>
+                            <td>{{ $referred->id }}</td>
+                            <td>{{ \Azuriom\Models\User::find($referred->referred_id)->name }}</td>
+                            <td>{{ $referred->referrer_total_earn }} {{ money_name() }}</td>
+                            <td>{{ $referred->created_via_link ? '✅' : '❌' }}</td>
+                            <td>{{ $referred->created_at->translatedFormat('d/m/Y') }} {{ trans('referral::messages.admin.at') }} {{ $sponsor->created_at->format('H:i') }}</td>
                         </tr>
                     @endforeach
                 </tbody>

@@ -33,7 +33,7 @@ class ShopBuyListener
                 $user = User::find($user_id);
                 $percentage = (float)setting('referral.percentage', 1) / 100;
 
-                $final_amount = (int)$amount * $percentage;
+                $final_amount = round($amount * $percentage, 2);
 
                 $username = $user->name;
                 $referrer_id = Referrals::where('referred_id', $user_id)->value('referrer_id');
@@ -62,8 +62,9 @@ class ShopBuyListener
                         'updated_at' => now(),
                      ]);
  
-                     $referrer_total_earn = (int)Referrals::where('referred_id', $user_id)->value('referrer_total_earn');
-                     Referrals::where('referred_id', $user_id)->update(['referrer_total_earn' => ($referrer_total_earn + $final_amount)]);
+                     $referrer_total_earn = (float)Referrals::where('referred_id', $user_id)->value('referrer_total_earn');
+                     $new_amount = round(($referrer_total_earn + $final_amount), 2);
+                     Referrals::where('referred_id', $user_id)->update(['referrer_total_earn' => $new_amount]);
 
                     if($send_notification) {
                         try {
