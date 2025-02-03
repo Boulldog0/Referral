@@ -18,7 +18,7 @@ class ReferralViewCard extends UserProfileCardComposer
         }
 
         $referrerName = null;
-        $referral = Referrals::where('referred_id', $user->id);
+        $referral = Referrals::where('referred_id', $user->id)->first();
 
         if($referral !== null) {
             $referrer = User::find($referral->referrer_id);

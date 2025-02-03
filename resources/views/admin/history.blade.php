@@ -26,7 +26,7 @@
                             <td>{{ $transaction->given_amount }} {{money_name()}}</td>
                             <td>{{ $transaction->percentage_given }}%</td>
                             <td><a href="{{ url('/admin/users/' . $transaction->user_id . '/edit') }}">{{ $transaction->username }}</a></td>
-                            <td>{{ $transaction->created_at->translatedFormat('d/m/Y') }} {{ trans('referral::messages.admin.at') }} {{ $transaction->created_at->format('H:i') }}</td>
+                            <td>{{ format_date($transaction->created_at) }}</td>
                         </tr>
                     @endforeach
                 </tbody>

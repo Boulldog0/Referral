@@ -66,7 +66,7 @@
                                         <td><a href="{{ url('/admin/users/' . $referred->referred_id . '/edit') }}">{{ \Azuriom\Models\User::find($referred->referred_id)->name }}</a></td>
                                         <td>{{ $referred->referrer_total_earn }} {{ money_name() }}</td>
                                         <td>{{ $referred->created_via_link ? '✅' : '❌' }}</td>
-                                        <td>{{ $referred->created_at->translatedFormat('d/m/Y') }} {{ trans('referral::messages.admin.at') }} {{ $referred->created_at->format('H:i') }}</td>
+                                        <td>{{ format_date($referred->created_at) }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -100,7 +100,7 @@
                                     <td>{{ $reward->given_amount }} {{money_name()}}</td>
                                     <td>{{ $reward->percentage_given }}%</td>
                                     <td><a href="{{ url('/admin/users/' . $reward->user_id . '/edit') }}">{{ \Azuriom\Models\User::find($reward->user_id)->name }}</a></td>
-                                    <td>{{ $reward->created_at->translatedFormat('d/m/Y') }} {{ trans('referral::messages.admin.at') }} {{ $reward->created_at->format('H:i') }}</td>
+                                    <td>{{ format_date($reward->created_at) }}</td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -134,7 +134,7 @@
                                     <td>{{ $transaction->total_amount }} {{money_name()}}</td>
                                     <td>{{ $transaction->given_amount }} {{money_name()}}</td>
                                     <td>{{ $transaction->percentage_given }}%</td>
-                                    <td>{{ $transaction->created_at->translatedFormat('d/m/Y') }} {{ trans('referral::messages.admin.at') }} {{ $transaction->created_at->format('H:i') }}</td>
+                                    <td>{{ format_date($transaction->created_at) }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

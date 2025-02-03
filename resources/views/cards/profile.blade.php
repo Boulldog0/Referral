@@ -52,7 +52,7 @@
                             <td>{{ \Azuriom\Models\User::find($referred->referred_id)->name }}</td>
                             <td>{{ $referred->referrer_total_earn }} {{ money_name() }}</td>
                             <td>{{ $referred->created_via_link ? '✅' : '❌' }}</td>
-                            <td>{{ $referred->created_at->translatedFormat('d/m/Y') }} {{ trans('referral::messages.admin.at') }} {{ $sponsor->created_at->format('H:i') }}</td>
+                            <td>{{ format_date($referred->created_at) }}</td>
                         </tr>
                     @endforeach
                 </tbody>

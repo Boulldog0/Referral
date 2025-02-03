@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->foreign('referred_id');
             $table->foreign('referrer_id');
-            $table->float('referrer_total_earn');
+            $table->decimal('referrer_total_earn');
             $table->boolean('created_via_link');
             $table->timestamps();
         });

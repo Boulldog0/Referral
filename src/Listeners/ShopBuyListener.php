@@ -62,7 +62,7 @@ class ShopBuyListener
                         'updated_at' => now(),
                      ]);
  
-                     $referrer_total_earn = (float)Referrals::where('referred_id', $user_id)->value('referrer_total_earn');
+                     $referrer_total_earn = Referrals::where('referred_id', $user_id)->value('referrer_total_earn');
                      $new_amount = round(($referrer_total_earn + $final_amount), 2);
                      Referrals::where('referred_id', $user_id)->update(['referrer_total_earn' => $new_amount]);
 
