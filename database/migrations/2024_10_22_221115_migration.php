@@ -10,8 +10,8 @@ return new class extends Migration
     {
         Schema::create('referrals', function (Blueprint $table) {
             $table->id();
-            $table->foreign('referred_id');
-            $table->foreign('referrer_id');
+            $table->integer('referred_id');
+            $table->integer('referrer_id');
             $table->decimal('referrer_total_earn');
             $table->boolean('created_via_link');
             $table->timestamps();
@@ -27,7 +27,7 @@ return new class extends Migration
         Schema::create('referrals_transactions', function(Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->foreign('command_id');
+            $table->integer('command_id');
             $table->integer('total_amount');
             $table->integer('referrer_id');
             $table->integer('percentage_given');
