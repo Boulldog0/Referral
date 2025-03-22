@@ -67,6 +67,7 @@ return [
             'unknow_player' => 'Specified player is unknow !',
             'reset_db' => 'Regenerate tables',
             'reset_db_label' => 'Use this button for delete and regenerate referral tables in database. Warning: All datas of referrals will be deleted !',
+            'user_deleted' => 'Deleted user',
         ],
         'rewards' => [
             'enable_referrer_regive_percentage' => 'Enable referrer give percentage (when a referred buy anything in the shop)',

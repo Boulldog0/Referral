@@ -63,7 +63,14 @@
                                 @foreach ($referreds as $referred)
                                     <tr>
                                         <td>{{ $referred->id }}</td>
-                                        <td><a href="{{ url('/admin/users/' . $referred->referred_id . '/edit') }}">{{ \Azuriom\Models\User::find($referred->referred_id)->name }}</a></td>
+                                        <td>
+                                        @php
+                                            $referredUser = \Azuriom\Models\User::find($referred->referred_id);
+                                        @endphp
+                                        <a href="{{ $referredUser ? url('/admin/users/' . $referred->referred_id . '/edit') : '#' }}">
+                                            {{ $referredUser ? $referredUser->name : trans('referral::messages.admin.user_deleted') }}
+                                        </a>
+                                        </td>
                                         <td>{{ $referred->referrer_total_earn }} {{ money_name() }}</td>
                                         <td>{{ $referred->created_via_link ? '✅' : '❌' }}</td>
                                         <td>{{ format_date($referred->created_at) }}</td>
@@ -99,7 +106,14 @@
                                     <td>{{ $reward->total_amount }} {{money_name()}}</td>
                                     <td>{{ $reward->given_amount }} {{money_name()}}</td>
                                     <td>{{ $reward->percentage_given }}%</td>
-                                    <td><a href="{{ url('/admin/users/' . $reward->user_id . '/edit') }}">{{ \Azuriom\Models\User::find($reward->user_id)->name }}</a></td>
+                                    <td>
+                                        @php
+                                            $rewardUser = \Azuriom\Models\User::find($reward->user_id);
+                                        @endphp
+                                        <a href="{{ $rewardUser ? url('/admin/users/' . $rewardUser->referred_id . '/edit') : '#' }}">
+                                            {{ $rewardUser ? $rewardUser->name : trans('referral::messages.admin.user_deleted') }}
+                                        </a>
+                                    </td>
                                     <td>{{ format_date($reward->created_at) }}</td>
                                 </tr>
                             @endforeach
@@ -130,7 +144,14 @@
                                 @foreach($buyings as $transaction)
                                     <tr>
                                     <td>{{ $transaction->id }}</td>
-                                    <td><a href="{{ url('/admin/users/' . $transaction->referrer_id . '/edit') }}">{{ \Azuriom\Models\User::find($transaction->referrer_id)->name }}</a></td>
+                                    <td>
+                                        @php
+                                            $transactUser = \Azuriom\Models\User::find($transaction->referrer_id);
+                                        @endphp
+                                        <a href="{{ $transactUser ? url('/admin/users/' . $transactUser->referrer_id . '/edit') : '#' }}">
+                                            {{ $transactUser ? $transactUser->name : trans('referral::messages.admin.user_deleted') }}
+                                        </a>
+                                    </td>
                                     <td>{{ $transaction->total_amount }} {{money_name()}}</td>
                                     <td>{{ $transaction->given_amount }} {{money_name()}}</td>
                                     <td>{{ $transaction->percentage_given }}%</td>

@@ -97,6 +97,7 @@ return [
         'referral_link' => 'Lien de parrainage',
         'confirm_db_regen' => 'S il vous plait veuillez confirmer la regénération des tables de parrainage de la base de donnée. Si vous la confirmez, toutes les données de parrainage vont être supprimés (parrains, filleuls, transactions, ...).',
         'db_regen_successfully' => 'Les tables de parrainage de la base de donnée ont correctement étés regénérées !',
+        'user_deleted' => 'Utilisateur supprimé',
     ],
     'profile' => [
         'title' => 'Profil des parrainages',

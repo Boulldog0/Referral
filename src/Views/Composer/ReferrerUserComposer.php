@@ -15,8 +15,14 @@ class ReferrerUserComposer extends AdminUserEditComposer
         $referral = Referrals::where('referred_id', $user->id)->first();
         if($referral !== null) {
             $rId = $referral->referrer_id;
-            $referrer = User::find($rId)->name;
-            $view->with('referrer', $referrer);
+            $rUser = User::find($rId);
+            if($rUser) {
+                $referrer = User::find($rId)->name;
+                $view->with('referrer', $referrer);
+            } else {
+                Referrals::where('referred_id', $user->id)->delete();
+                $view->with('referrer', null);
+            }
         } else {
             $view->with('referrer', null);
         }
