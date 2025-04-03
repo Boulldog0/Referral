@@ -24,7 +24,7 @@
         @else
             <h3 id="referrerName">{{ setting('referral.no_referrer') }}</h3>
             @if(!setting('referral.ereff'))
-                <a class="btn btn-primary" href="">
+                <a class="btn btn-primary" href="{{ route('referral.register') }}">
                     <i class="bi bi-person-fill-add"></i>
                     {{ trans('referral::messages.profile.add_referrer') }}
                 </a>
