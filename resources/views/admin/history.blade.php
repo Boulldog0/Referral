@@ -19,13 +19,19 @@
                 </thead>
                 <tbody>
                     @foreach($transactions as $transaction)
+                        @php
+                            $referrer = \Azuriom\Models\User::where('id', $transaction->referrer_id)->first();
+                            $referred = \Azuriom\Models\User::where('id', $transaction->user_id)->first();
+                            $referrerName = $referrer ? $referrer->name : 'Unknown (User Deleted #' . $transaction->referrer_id . ')';
+                            $referredName = $referred ? $referred->name : 'Unknown (User Deleted #' . $transaction->referred_id . ')';            
+                        @endphp
                         <tr>
                             <td>{{ $transaction->id }}</td>
-                            <td><a href="{{ url('/admin/users/' . $transaction->referrer_id . '/edit') }}">{{ $transaction->referrer_username }}</a></td>
+                            <td><a href="{{ url('/admin/users/' . $transaction->referrer_id . '/edit') }}">{{ $referrerName }}</a></td>
                             <td>{{ $transaction->total_amount }} {{money_name()}}</td>
                             <td>{{ $transaction->given_amount }} {{money_name()}}</td>
                             <td>{{ $transaction->percentage_given }}%</td>
-                            <td><a href="{{ url('/admin/users/' . $transaction->user_id . '/edit') }}">{{ $transaction->username }}</a></td>
+                            <td><a href="{{ url('/admin/users/' . $transaction->user_id . '/edit') }}">{{ $referredName }}</a></td>
                             <td>{{ format_date($transaction->created_at) }}</td>
                         </tr>
                     @endforeach

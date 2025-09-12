@@ -23,7 +23,7 @@ class ReferralRegisterSubmitController extends Controller
     
         if($validator->fails()) {
             return redirect()->route('referral.register')
-                >with('error', trans('referral::messages.register.validator_failure'));
+                ->with('error', trans('referral::messages.register.validator_failure'));
         }
     
         $user = Auth::user();
