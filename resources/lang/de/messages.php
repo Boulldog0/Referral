@@ -41,6 +41,7 @@ return [
             'history' => 'Belohnungshistorie',
             'referrals' => 'Empfehlungen',
             'statistics' => 'Statistiken',
+            'link-packages' => 'Pakete verknüpfen',
         ],
         'titles' => [
             'settings' => 'Empfehlung - Einstellungen',
@@ -99,6 +100,10 @@ return [
         'referral_link' => 'Empfehlungslink',
         'confirm_db_regen' => 'Bitte bestätige die Regeneration der Empfehlungs-Tabellen. Wenn du bestätigst, werden alle Empfehlungsdaten gelöscht (Empfehlungsgeber, Geworbene, Transaktionen usw.).',
         'db_regen_successfully' => 'Empfehlungsdatenbank erfolgreich neu generiert!',
+        'package-links' => 'Paketlinks',
+        'how-works' => 'Wie es funktioniert',
+        'links-saved' => 'Links wurden erfolgreich gespeichert!',
+        'package-link-explanations' => 'Der für jedes Paket festgelegte Betrag entspricht dem Betrag der Seitenwährung, der an den Werber ausgezahlt wird, wenn ein geworbener Benutzer dieses Paket kauft.'
     ],
     'profile' => [
         'title' => 'Empfehlungsprofil',

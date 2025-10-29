@@ -41,6 +41,7 @@ return [
             'history' => 'Rewards History',
             'referrals' => 'Referrals',
             'statistics' => 'Statistics',
+            'link-packages' => 'Link packages',
         ],
         'titles' => [
             'settings' => 'Referral - Settings',
@@ -99,6 +100,10 @@ return [
         'referral_link' => 'Referral link',
         'confirm_db_regen' => 'Please confirm the db referrals tables regeneration. If you confirm it, all referrals datas will be deleted (referrers and referreds, transactions, ...).',
         'db_regen_successfully' => 'Database referrals tables successfully regenerated !',
+        'package-links' => 'Package links',
+        'how-works' => 'How it works',
+        'links-saved' => 'Links saved successfully !',
+        'package-link-explanations' => 'The amount configured for each package corresponds to the amount of site currency that will be redistributed to the referrer when a referred user purchases this package.'
     ],
     'profile' => [
         'title' => 'Referrals Profile',

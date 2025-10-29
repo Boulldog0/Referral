@@ -4,7 +4,7 @@ use Azuriom\Plugin\Referral\Controllers\Admin\AdminSettingsController;
 use Azuriom\Plugin\Referral\Controllers\Admin\AdminHistoryController;
 use Azuriom\Plugin\Referral\Controllers\Admin\AdminStatisticsController;
 use Azuriom\Plugin\Referral\Controllers\Admin\AdminRewardsController;
-use Azuriom\Plugin\Referral\Controllers\Admin\AdminReferralsController;
+use Azuriom\Plugin\Referral\Controllers\Admin\AdminPackagesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,3 +27,5 @@ Route::get('/history', [AdminHistoryController::class, 'index'])->name('history'
 Route::get('/statistics', [AdminStatisticsController::class, 'index'])->name('statistics');
 Route::post('/referrer/change/{id}', [AdminSettingsController::class, 'changeReferrer'])->name('referrer.change');
 Route::post('/settings/resetdb', [AdminSettingsController::class, 'recreateReferralTables'])->name('settings.reset_db');
+Route::get('/links', [AdminPackagesController::class, 'index'])->name('links');
+Route::post('/links/save', [AdminPackagesController::class, 'save'])->name('links.save');

@@ -2,6 +2,8 @@
 namespace Azuriom\Plugin\Referral\Listeners;
 
 use Azuriom\Plugin\Shop\Models\Payment;
+use Azuriom\Plugin\Shop\Models\PaymentItem;
+use Azuriom\Plugin\Referral\Models\ReferralPackagesLinks;
 use Azuriom\Plugin\Referral\Models\ReferralTransaction;
 use Azuriom\Models\User;
 use Azuriom\Notifications\AlertNotification;
@@ -20,24 +22,29 @@ class ShopBuyListener
 
         $transactionId = ltrim(trim(Str::between($event->data['introLines'][2], ':', '(')), '#');
         $payment = Payment::where('id', $transactionId)->latest()->first();
+        $paymentItem = PaymentItem::where('payment_id', $payment->id)->first();
 
         if(!$payment) {
             return;
         }
 
+        $user_id = $payment->user_id;
+        $amount = $payment->price; 
+        $user = User::find($user_id);
+        $percentage = (float)setting('referral.percentage', 1) / 100;
+
+        $final_amount = round($amount * $percentage, 2);
+
+        $username = $user->name;
+        $referrer_id = Referrals::where('referred_id', $user_id)->value('referrer_id');
+
+        if(!$referrer_id) return;
+        $referrer = User::find($referrer_id);
+        if($referrer === null) return;
+
         if($payment && $payment->isWithSiteMoney()) {
             $give_percentage_enable = setting('referral.referral.enabled', false);
-            $user_id = $payment->user_id;
             if($give_percentage_enable && Referrals::where('referred_id', $user_id)->exists()) {
-                $amount = $payment->price; 
-                $user = User::find($user_id);
-                $percentage = (float)setting('referral.percentage', 1) / 100;
-
-                $final_amount = round($amount * $percentage, 2);
-
-                $username = $user->name;
-                $referrer_id = Referrals::where('referred_id', $user_id)->value('referrer_id');
-                $referrer = User::find($referrer_id);
                 
                 if($referrer !== null) {
                     $limit = setting('referral.limit', 0);
@@ -82,8 +89,23 @@ class ShopBuyListener
                     }
                 }
             }
-        } else {
-            return;
+        }
+
+        $packageLink = ReferralPackagesLinks::where('shop_package_id', $paymentItem->buyable_id)->first();
+        $amountToGive = $packageLink->applied_amount;
+        if($packageLink && $amountToGive > 0) {
+            $referrer->money += $amountToGive;
+            $referrer->save();
+            ReferralTransaction::create([
+                'user_id' => $user->id,
+                'command_id' =>  $transactionId,
+                'total_amount' => $amount,
+                'referrer_id' => $referrer->id,
+                'percentage_given' => 0,
+                'given_amount' => $amountToGive,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
         }
     }
 

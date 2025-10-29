@@ -107,6 +107,7 @@ class ReferralServiceProvider extends BasePluginServiceProvider
                     'referral.admin.rewards' => trans('referral::messages.admin.nav.rewards'),
                     'referral.admin.history' => trans('referral::messages.admin.nav.history'),
                     'referral.admin.statistics' => trans('referral::messages.admin.nav.statistics'),
+                    'referral.admin.links' => trans('referral::messages.admin.nav.link-packages')
                 ],
                 'permission' => 'referral.manage'
             ]

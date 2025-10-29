@@ -41,6 +41,7 @@ return [
             'rewards' => 'Récompenses',
             'history' => 'Historique de Récompenses',
             'statistics' => 'Statistiques',
+            'link-packages' => 'Lier les articles du shop',
         ],
         'titles' => [
             'settings' => 'Parrainages - Paramètres',
@@ -98,6 +99,10 @@ return [
         'confirm_db_regen' => 'S il vous plait veuillez confirmer la regénération des tables de parrainage de la base de donnée. Si vous la confirmez, toutes les données de parrainage vont être supprimés (parrains, filleuls, transactions, ...).',
         'db_regen_successfully' => 'Les tables de parrainage de la base de donnée ont correctement étés regénérées !',
         'user_deleted' => 'Utilisateur supprimé',
+        'package-links' => 'Articles liés',
+        'how-works' => 'Comment ça fonctionne',
+        'links-saved' => 'Liens correctement sauvegardés !',
+        'package-link-explanations' => 'Le montant configuré pour chaque article correspond à la somme de monnaie qui sera redistribuée au parrain quand un utilitateur parrainé achètera cet article.'
     ],
     'profile' => [
         'title' => 'Profil des parrainages',
