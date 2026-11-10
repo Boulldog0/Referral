@@ -24,6 +24,12 @@
                 </div>
 
                 <div class="mb-3 form-check form-switch">
+                    <input type="checkbox" class="form-check-input" id="disableRefRegisterPage" name="disable_register_page" @checked($disableRefPage)>
+                    <label class="form-check-label" for="disableRefRegisterPage">{{ trans('referral::messages.admin.settings.disable_register_page') }}</label>
+                    <div id="moneyLabel" class="form-text">{{ trans('referral::messages.admin.settings.description_disable_register_page') }}</div>
+                </div>
+
+                <div class="mb-3 form-check form-switch">
                     <input type="checkbox" class="form-check-input" id="enableReferralRegistrationOnlyAfterACreate" name="enable_referral" @checked($regOnlyACr)>
                     <label class="form-check-label" for="enableReferralRegistrationOnlyAfterACreate">{{ trans('referral::messages.admin.settings.enable_registr_only_acreate') }}</label>
                     <div id="moneyLabel" class="form-text">{{ trans('referral::messages.admin.settings.description_registration_set') }}</div>

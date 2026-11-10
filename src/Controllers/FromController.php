@@ -18,6 +18,6 @@ class FromController extends Controller
         }
         
         $request->session()->put('referrer', $username);
-        return redirect()->route('register');
+        return redirect()->route('referral.register');
     }
 }
