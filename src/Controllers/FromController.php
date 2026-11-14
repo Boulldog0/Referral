@@ -18,6 +18,7 @@ class FromController extends Controller
         }
         
         $request->session()->put('referrer', $username);
-        return redirect()->route('referral.register');
+        $redirect_url = setting('referral.redirect_url', route('referral.register'));
+        return redirect($redirect_url);
     }
 }

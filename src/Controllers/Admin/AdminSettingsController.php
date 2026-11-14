@@ -26,6 +26,7 @@ class AdminSettingsController extends Controller
             'successMessage' => setting('referral.success_message', trans('referral::messages.referral.default_success_message')),
             'noReferrer' => setting('referral.no_referrer', trans('referral::messages.profile.no_referrer')),
             'noReferred' => setting('referral.no_referred', trans('referral::messages.profile.no_referred_users')),
+            'redirectUrl' => setting('referral.redirect_url', route('referral.register'))
         ]);
     }
 
@@ -37,6 +38,7 @@ class AdminSettingsController extends Controller
             'success_message' => ['nullable', 'string'],
             'no_referrer' => ['nullable', 'string'],
             'no_referred' => ['nullable', 'string'],
+            'redirect_url' => ['nullable', 'string']
         ]);
     
         Setting::updateSettings([
@@ -48,6 +50,7 @@ class AdminSettingsController extends Controller
             'referral.success_message' => $request->input('success_message'),
             'referral.no_referrer' => $request->input('no_referrer'), 
             'referral.no_referred' => $request->input('no_referred'), 
+            'referral.redirect_url' => $request->input('redirect_url'),
         ]);
     
         ActionLog::log('referral.settings.updated');

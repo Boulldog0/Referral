@@ -67,6 +67,7 @@ return [
             'referred_commands' => 'Command(s) executed for the referred when it set a referrer.',
             'unknow_player' => 'Specified player is unknow !',
             'reset_db' => 'Regenerate tables',
+            'redirect_url' => 'Redirect URL after registering a referrer (via route /from/)',
             'reset_db_label' => 'Use this button for delete and regenerate referral tables in database. Warning: All datas of referrals will be deleted !',
             'user_deleted' => 'Deleted user',
         ],

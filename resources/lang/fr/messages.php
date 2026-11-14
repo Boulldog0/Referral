@@ -66,6 +66,7 @@ return [
             'referred_commands' => 'Commande(s) executée(s) pour le filleul lorsqu\'il ajoute un parrain.',
             'unknow_player' => 'Le joueur spécifié est inconnu !',
             'reset_db' => 'Regénérer les tables',
+            'redirect_url' => 'URL de redirection après l\'enregistrement d\'un parrain (via route /from/)',
             'reset_db_label' => 'Utilisez ce bouton pour supprimer et regénérer toutes les tables de parrainages dans la base de donnée. Attention : Toutes les données des parrainages seront supprimés !',
         ],
         'rewards' => [
